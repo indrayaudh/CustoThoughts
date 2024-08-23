@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custothoughts</title>
+    <style>
+        /* Reset some default styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background-color: #f4f4f400;
+            color: #333;
+            padding-top: 60px; /* Adjusts for the fixed header */
+        }
+
+    header {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center; /* Center the header content */
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    display: inline-flex; /* Change to inline-flex to allow centering */
+    justify-content: center; /* Center the nav links */
+    margin-bottom: 0;
+}
+ nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #FFDD57;
+        }
+
+        #nav-toggle {
+            display: none;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px;
+            font-size: 18px;
+            cursor: pointer;
+            position: absolute;
+            right: 20px;
+            top: 15px;
+        }
+
+        section {
+            padding: 40px 20px;
+            background-color: white;
+            margin: 20px auto;
+            max-width: 800px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        h2 {
+            color: #007bff;
+            margin-bottom: 20px;
+        }
+
+        ul {
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+
+        ul li {
+            margin-bottom: 10px;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        footer {
+            background-color: #007BFF;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            box-shadow: 0px -4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        #scroll-top {
+            display: none;
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 50%;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                background-color: #007BFF;
+                position: absolute;
+                top: 60px;
+                right: 0;
+                width: 100%;
+                display: none;
+            }
+
+            nav ul.show {
+                display: block;
+            }
+
+            nav ul li {
+                margin: 15px 0;
+            }
+
+            #nav-toggle {
+                display: block;
+            }
+
+            section {
+                padding: 20px;
+                margin: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>CUSTOTHOUGHTS</h1>
+        <nav>
+            <ul id="nav-list">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button id="nav-toggle">☰</button>
+        </nav>
+    </header>
+
+    <section id="home">
+        <h2>About Our Support Services</h2>
+        <img src="Aboust our services.jpg" alt="Customer Support">
+        <p>We offer you over 5000+ reviews on any product from any e-commerce application or website you search for. We also offer you a platform where you can write your valuable reviews on any product starting from foods to shoes.</p>
+    </section>
+
+    <section id="services">
+        <h2>Our Services</h2>
+        <img src="Customer services logo.jpg" alt="Our Services">
+        <ul>
+            <li>Technical Support</li>
+            <li>Customer Inquiries</li>
+            <li>Live Chat Assistance</li>
+            <li>Remote Troubleshooting</li>
+        </ul>
+    </section>
+
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <img src="Contact Us logo.jpg" alt="Contact Us">
+        <form id="contact-form">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" required></textarea>
+            
+            <button type="submit">Send</button>
+        </form>
+        <p id="form-response"></p>
+    </section>
+
+    <button id="scroll-top" title="Go to top">↑</button>
+
+    <footer>
+        <p>&copy; 2024 Customer Support Services. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Toggle navigation menu for mobile devices
+        const navToggle = document.getElementById('nav-toggle');
+        const navList = document.getElementById('nav-list');
+
+        navToggle.addEventListener('click', () => {
+            navList.classList.toggle('show');
+        });
+
+        // Scroll to top button functionality
+        const scrollTopButton = document.getElementById('scroll-top');
+
+        window.onscroll = function() {
+            if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+                scrollTopButton.style.display = "block";
+            } else {
+                scrollTopButton.style.display = "none";
+            }
+        };
+
+        scrollTopButton.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Simple form validation and response message
+        const contactForm = document.getElementById('contact-form');
+        const formResponse = document.getElementById('form-response');
+
+        contactForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+
+            if (name && email && message) {
+                formResponse.textContent = 'Thank you, ' + name + '! Your message has been sent.';
+                formResponse.style.color = 'green';
+                contactForm.reset();
+            } else {
+                formResponse.textContent = 'Please fill out all fields.';
+                formResponse.style.color = 'red';
+            }
+        });
+    </script>
+</body>
+</html>
